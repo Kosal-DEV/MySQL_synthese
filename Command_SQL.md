@@ -9,11 +9,18 @@ DROP DATABASE nomDB;
 ```
 3. Créer une table dans la base de données avec 4 champs :
 ```SQL
-CREATE TABLE nomTable
-(firstname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,lastname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-gender ENUM('M','F','X') COLLATE utf8mb4_general_ci NOT NULL,date_of_birth DATE NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE nomTable (
+  firstname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+  lastname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+  gender ENUM('M','F','X') COLLATE utf8mb4_general_ci NOT NULL,
+  date_of_birth DATE NOT NULL
+) ENGINE = InnoDB;
 ```
 4. Créer un champ "adresse" dans notre table :
 ```SQL
-ALTER TABLE users ADD address VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL ; 
+ALTER TABLE users ADD address VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL; 
+```
+5. Supprimer un champ de notre base de donnée :
+```SQL
+ALTER TABLE nomTable DROP nomChamp; 
 ```
