@@ -1,13 +1,13 @@
 ## Les commandes SQL
-1. Créer une database :
+**1. Créer une database :**
 ```SQL
 CREATE DATABASE NomDB DEFAULT CHARACTER SET utf8mb3;
 ```
-2. Supprimer une base de donnée :
+**2. Supprimer une base de donnée :**
 ```SQL
 DROP DATABASE nomDB;
 ```
-3. Créer une table dans la base de données avec 4 champs :
+**3. Créer une table dans la base de données avec 4 champs :**
 ```SQL
 CREATE TABLE nomTable (
   firstname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -16,11 +16,11 @@ CREATE TABLE nomTable (
   date_of_birth DATE NOT NULL
 ) ENGINE = InnoDB;
 ```
-4. Créer un champ "adresse" dans notre table :
+**4. Créer un champ "adresse" dans notre table :**
 ```SQL
 ALTER TABLE users ADD address VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL; 
 ```
-5. Supprimer un champ de notre base de donnée :
+**5. Supprimer un champ de notre base de donnée :**
 ```SQL
 ALTER TABLE nomTable DROP nomChamp; 
 ```
