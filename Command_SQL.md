@@ -10,6 +10,7 @@ DROP DATABASE nomDB;
 **3. Créer une table dans la base de données avec 4 champs :**
 ```SQL
 CREATE TABLE nomTable (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   firstname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   lastname VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   gender ENUM('M','F','X') COLLATE utf8mb4_general_ci NOT NULL,
