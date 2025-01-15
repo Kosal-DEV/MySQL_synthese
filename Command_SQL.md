@@ -188,3 +188,15 @@ Cette commande ajoute une colonne `address` de type chaîne de caractères (avec
 ALTER TABLE nomTable DROP nomChamp; 
 ```
 La commande permet de supprimer une colonne (champ) de la table `nomTable`. Une fois la commande exécutée, la colonne `nomChamp` et toutes les données qu'elle contient seront supprimées de manière définitive.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Modifier le nom d'une table :
+```SQL
+ALTER TABLE nomDeLaTable RENAME AS nouveauNomDeLaTable;
+```
+Cette command permet de modifier le nom d'une table.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
