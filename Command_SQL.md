@@ -191,7 +191,7 @@ La commande permet de supprimer une colonne (champ) de la table `nomTable`. Une 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Modifier le nom d'une table :
+### 12. Modifier le nom d'une table :
 ```SQL
 ALTER TABLE nomDeLaTable RENAME AS nouveauNomDeLaTable;
 ```
