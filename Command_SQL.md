@@ -205,3 +205,13 @@ SHOW CREATE TABLE users;
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### 14. Créer 5 enregistrements dans notre base de donnée users :
+```SQL
+INSERT INTO users VALUES
+ ('null', 'Jessica', 'Biel', 'F', 1985-11-02, 'Los Angeles', 59),
+ ('null', 'Mohamed', 'Salah', 'M', 1989-03-10, 'Caire', 80),
+ ('null', 'Sadio', 'Mané', 'M', 1990-05-17, 'Dakar', 82),
+ ('null', 'Nathan', 'Drake', 'X', 2010-06-30, 'El Dorado', 75),
+ ('null', 'Angelina', 'Jolie', 'F', 1973-09-21, 'Texas', 55);
+```
