@@ -218,7 +218,7 @@ INSERT INTO users VALUES
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 15. Modifier une table pour ajouter une clé étrangére :
+### 15. Modifier une table pour ajouter une clé id pour créer une relation entre les tables :
 ```SQL
 ALTER TABLE articles ADD id_user_article INT NOT NULL ;
 ```
@@ -228,3 +228,5 @@ ALTER TABLE articles ADD id_user_article INT NOT NULL ;
 `id_user_article` le nom de la clé étrangére
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### 16. 
