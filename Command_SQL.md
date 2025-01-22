@@ -215,3 +215,16 @@ INSERT INTO users VALUES
  ('null', 'Nathan', 'Drake', 'X', 2010-06-30, 'El Dorado', 75),
  ('null', 'Angelina', 'Jolie', 'F', 1973-09-21, 'Texas', 55);
 ```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### 15. Modifier une table pour ajouter une clé étrangére :
+```SQL
+ALTER TABLE articles ADD id_user_article INT NOT NULL ;
+```
+`ALTER` permet de modifier la table,
+`articles` est le nom de la table,
+`ADD` permet de faire un ajout,
+`id_user_article` le nom de la clé étrangére
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
