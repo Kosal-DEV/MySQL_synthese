@@ -229,4 +229,85 @@ ALTER TABLE articles ADD id_user_article INT NOT NULL ;
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 16. 
+### 16. Création d'un nouvelle utilisateur :
+
+```SQL
+CREATE USER 'nouvelutilisateur'@'localhost' IDENTIFIED BY 'motdepasse';
+```
+• 'nouvelutilisateur' est le nom d'utilisateur.
+
+• 'localhost' spécifie l'hôte à partir duquel l'utilisateur peut se connecter.
+
+• 'motdepasse' est le mot de passe de l'utilisateur.
+
+### 17. Modifier le mot de passe d'un utilisateur :
+
+```SQL
+- ALTER USER 'nouvelutilisateur'@'localhost' IDENTIFIED BY 'nouveaumotdepasse';
+```
+
+### 18. Accorder des Privilèges
+On va voir qu’on peut utiliser une commande pour attribuer des droits. Si vous vous
+connecté avec votre nouvel utilisateur que vous avez créé, vous remarquerez que vous ne
+pourrez pas créer une nouvelle base de données par exemple, ni même voir celles qu’on
+avait. Il faudra d’abord utiliser la commande `GRANT` pour accorder des privilèges. Voici la
+syntaxe pour rajouter les droits sur une base de données « maBaseDeDonnees » pour l’utilisateur « nouvelutilisateur » :
+
+```SQL
+- GRANT ALL PRIVILEGES ON maBaseDeDonnees.* TO 'nouvelutilisateur'@'localhost';
+```
+
+Exemple pour accorder tous les privilèges sur notre base de données « coursmysql » avec votre utilisateur que vous venez de créer :
+
+```SQL
+- GRANT ALL PRIVILEGES ON coursmysql.* TO 'votreNom'@'localhost';
+```
+
+Bien entendu pour que ça fonctionne il faudra le faire en tant que « root », qui est le compte
+principal par défaut. Donc il faudra se connecter avec l’utilisateur root pour effectuer cette
+commande ci-dessus. 
+
+### 19. Voir les priviléges accordés à un utilisateur :
+
+```SQL
+SHOW GRANTS FOR 'nouvelutilisateur'@'localhost';
+```
+
+### 20. Type de privilége :
+
+Types de Privilèges
+Si vous ne voulez pas donner tous les droits à un utilisateur, vous pouvez choisir ce qu’il aura le droit de faire. Voici quelques privilèges courants :
+
+• ALL PRIVILEGES : Accorde tous les privilèges.
+
+• SELECT : Permet de lire les données.
+
+• INSERT : Permet d'insérer des données.
+
+• UPDATE : Permet de mettre à jour des données.
+
+• DELETE : Permet de supprimer des données.
+
+• CREATE : Permet de créer des bases de données et des tables.
+
+• DROP : Permet de supprimer des bases de données et des tables.
+
+• GRANT OPTION : Permet de déléguer des privilèges.
+
+Utilisez FLUSH PRIVILEGES pour appliquer les modifications des privilèges :
+
+ - FLUSH PRIVILEGES;
+
+Ce n’est pas tout le temps obliger de faire le flush mais c’est une bonne pratique.
+
+### 21. Revoker des priviléges :
+
+```SQL
+REVOKE ALL PRIVILEGES ON maBaseDeDonnees.* FROM 'nouvelutilisateur'@'localhost';
+```
+
+### 22. Supprimer un utilisateur :
+
+```SQL
+DROP USER 'nouvelutilisateur'@'localhost';
+```
