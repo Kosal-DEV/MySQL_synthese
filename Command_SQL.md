@@ -311,3 +311,128 @@ REVOKE ALL PRIVILEGES ON maBaseDeDonnees.* FROM 'nouvelutilisateur'@'localhost';
 ```SQL
 DROP USER 'nouvelutilisateur'@'localhost';
 ```
+
+# Les Jointures en MySQL
+
+## Introduction
+Les jointures en **MySQL** permettent de combiner des lignes de plusieurs tables en fonction d'une condition commune. Elles sont essentielles pour récupérer des données relationnelles efficacement.
+
+## Types de Jointures
+
+### 1. **INNER JOIN** (Jointure interne)
+- Retourne uniquement les lignes ayant une correspondance dans les deux tables.
+
+Syntaxe :
+
+```sql
+SELECT colonne(s)
+FROM table1
+INNER JOIN table2 ON table1.colonne = table2.colonne;
+```
+
+### 2. **LEFT JOIN** (Jointure externe gauche)
+- Retourne toutes les lignes de la première table (gauche) et les correspondances de la seconde (droite). Si aucune correspondance n'est trouvée, les valeurs de la table droite seront `NULL`.
+
+Syntaxe :
+
+```sql
+SELECT colonne(s)
+FROM table1
+LEFT JOIN table2 ON table1.colonne = table2.colonne;
+```
+
+### 3. **RIGHT JOIN** (Jointure externe droite)
+- Retourne toutes les lignes de la seconde table (droite) et les correspondances de la première (gauche). Si aucune correspondance n'est trouvée, les valeurs de la table gauche seront `NULL`.
+
+Syntaxe :
+
+```sql
+SELECT colonne(s)
+FROM table1
+RIGHT JOIN table2 ON table1.colonne = table2.colonne;
+```
+
+### 4. **FULL OUTER JOIN** (Jointure externe complète)
+- MySQL ne supporte pas directement le **FULL JOIN**, mais il peut être simulé avec une combinaison de `LEFT JOIN` et `RIGHT JOIN` avec `UNION`.
+
+Syntaxe :
+
+```sql
+SELECT colonne(s)
+FROM table1
+LEFT JOIN table2 ON table1.colonne = table2.colonne
+UNION
+SELECT colonne(s)
+FROM table1
+RIGHT JOIN table2 ON table1.colonne = table2.colonne;
+```
+
+### 5. **CROSS JOIN** (Jointure croisée)
+- Produit un produit cartésien des deux tables (chaque ligne de la première table est combinée avec chaque ligne de la seconde).
+
+Syntaxe :
+
+```sql
+SELECT colonne(s)
+FROM table1
+CROSS JOIN table2;
+```
+
+### 6. **SELF JOIN** (Auto-jointure)
+- Une jointure où une table est jointe avec elle-même.
+
+Syntaxe :
+
+```sql
+SELECT A.colonne, B.colonne
+FROM table A, table B
+WHERE A.colonne = B.colonne;
+```
+
+## Exemple avec une table `élève` et une table `note`
+
+### Création des tables
+```sql
+CREATE TABLE eleve (
+    id INT PRIMARY KEY,
+    nom VARCHAR(50)
+);
+
+CREATE TABLE note (
+    id INT PRIMARY KEY,
+    eleve_id INT,
+    matiere VARCHAR(50),
+    note INT,
+    FOREIGN KEY (eleve_id) REFERENCES eleve(id)
+);
+```
+
+### Insertion de données
+```sql
+INSERT INTO eleve (id, nom) VALUES
+(1, 'Alice'),
+(2, 'Bob'),
+(3, 'Charlie');
+
+INSERT INTO note (id, eleve_id, matiere, note) VALUES
+(1, 1, 'Maths', 15),
+(2, 1, 'Français', 18),
+(3, 2, 'Maths', 12);
+```
+
+### INNER JOIN : Récupérer les élèves avec leurs notes
+```sql
+SELECT eleve.nom, note.matiere, note.note
+FROM eleve
+INNER JOIN note ON eleve.id = note.eleve_id;
+```
+
+### LEFT JOIN : Récupérer tous les élèves même ceux sans notes
+```sql
+SELECT eleve.nom, note.matiere, note.note
+FROM eleve
+LEFT JOIN note ON eleve.id = note.eleve_id;
+```
+
+## Conclusion
+Les jointures en **MySQL** sont essentielles pour interroger efficacement des bases de données relationnelles. Le choix du type de jointure dépend du résultat souhaité. Une bonne maîtrise des jointures permet d'optimiser les performances et la lisibilité des requêtes SQL.
